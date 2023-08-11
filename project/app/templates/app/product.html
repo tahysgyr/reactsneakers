@@ -1,0 +1,25 @@
+{% extends 'app/index.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Sneaker • {{ product.name }}</title>
+</head>
+<body>
+    <a href="{% url 'main' %}"><img src="{% static 'images/undo.svg' %}" alt="undo" width="20" height="20"><span>Назад</span></a>
+    <img src="{{ product.image.url }}" alt="" height="20%" width="20%">
+    <h3>{{ product.name }}</h3>
+    <h5>{{ product.brand }}</h5>
+    <h6>
+        <span>Цена:</span> 
+        <br>
+        <big>{{ product.price }}₽</big>
+    </h6>
+    <a href="" type="button" class="btn btn-primary"><img src="{% static 'images/cart.svg' %}" alt="cart" width="20" height="20"><span>Добавить в корзину</span></a>
+    <a href="" type="button" class="btn btn-primary"><img src="{% static 'images/heart.svg' %}" alt="heart" width="20" height="20"><span>Добавить в "Избранное"</span></a>
+{% endblock %}
+</body>
+</html>

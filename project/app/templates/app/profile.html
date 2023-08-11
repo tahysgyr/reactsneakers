@@ -1,0 +1,12 @@
+{% extends 'app/index.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'main' %}"><img src="{% static 'images/undo.svg' %}" alt="undo" width="20" height="20"><span>Назад</span></a>
+            <h3>{{ context.username }}</h3>
+        </div>
+    </div>
+</div>
+{% endblock %}

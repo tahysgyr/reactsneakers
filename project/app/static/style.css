@@ -1,0 +1,114 @@
+@font-face {
+    font-family: Inter;
+    src: url('../static/fonts/Inter-Regular.ttf');
+}
+@font-face {
+    font-family: Inter-Bold;
+    src: url('../static/fonts/Inter-Bold.ttf');
+}
+h3, h5, h6, span {
+    font-family: Inter;
+}
+span.name {
+    font-size: 20px;
+    font-family: Inter-Bold;
+}
+span.cena {
+    color: #BDBDBD;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 13.31px;
+}
+span.price {
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16.94px;
+}
+p.name {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+}
+.product {
+    width: 210px;
+    height: 260px;
+    border: 1px solid #F3F3F3;
+    border-radius: 40px;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 11
+}
+.add-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid #f2f2f2;
+    background-color: white;
+}
+span.description {
+    font-size: 14px;
+    font-family: Inter;
+    color: #9B9B9B;
+}
+header .col-md, header .col-md-second {
+    display: inline;
+}
+header .col-md span, header .col-md-second span {
+    margin-left: 16px;
+}
+header {
+    padding-top: 44px;
+}
+.kermit {
+    background-color: #F4EFE9;
+    border-radius: 20px;
+}
+span.stan span {
+    color: #8BB43C;
+    font-weight: 700;
+    font-size: 38px;
+}
+.all-sneakers {
+    font-size: 32px;
+    font-family: Inter-Bold;
+    margin-top: 30px;
+}
+span.stan {
+    font-family: Inter-Bold;
+    font-size: 38px;
+}
+.login {
+    margin: 0 auto;
+}
+button.buy {
+    font-size: 16px;
+    color: white;
+    border: none;
+    background-color: #A5D364;
+    border-radius: 110px;
+    width: 177px;
+    height: 47px;
+}
+img {
+    pointer-events: none;
+}
+div a {
+    color: black;
+    text-decoration: none;
+}
+div a:hover {
+    color: #757575;
+    text-decoration: none;
+}
+.dropdown {
+    display: inline;
+}
+hr {
+    color: #EAEAEA;
+    size: 1px;
+}
