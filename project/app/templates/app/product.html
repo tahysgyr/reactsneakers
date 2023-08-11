@@ -18,8 +18,15 @@
         <br>
         <big>{{ product.price }}₽</big>
     </h6>
-    <a href="" type="button" class="btn btn-primary"><img src="{% static 'images/cart.svg' %}" alt="cart" width="20" height="20"><span>Добавить в корзину</span></a>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% if has_items%}
+        <button name="remove_tovar"><img src="{% static 'images/cart.svg' %}" alt="cart" width="20" height="20"><span>Удалить из корзины</span></button>
+        {% else %}
+        <button name="add_product"><img src="{% static 'images/cart.svg' %}" alt="cart" width="20" height="20"><span>Добавить в корзину</span></button>
+        {% endif %}
     <a href="" type="button" class="btn btn-primary"><img src="{% static 'images/heart.svg' %}" alt="heart" width="20" height="20"><span>Добавить в "Избранное"</span></a>
+</form>
 {% endblock %}
 </body>
 </html>

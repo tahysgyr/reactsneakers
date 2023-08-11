@@ -5,6 +5,7 @@ from .models import Products
 from .forms import UserLoginForm, UserRegisterForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from .models import Cart
 
 # Create your views here.
 
@@ -13,7 +14,23 @@ def main_render(request):
 
 def show_product(request, sneak_id: int):
     product = get_object_or_404(Products, id=sneak_id)
-    return render(request, 'app/product.html', {'product': product})
+    cart_items = Cart.objects.filter(user=request.user,product=product)
+    has_items = bool(cart_items)
+    if request.method == 'POST':
+        if 'add_product' in request.POST:
+            cart_item, created = Cart.objects.get_or_create(user=request.user, product=product)
+            
+            if not created:
+                cart_item.quanity += 1
+                cart_item.save()
+                return redirect('/')
+            
+        elif 'remove_tovar' in request.POST:
+            cart_item = Cart.objects.get(user=request.user, product=product)
+            cart_item.delete()
+        
+    return render(request, 'app/product.html', {'product': product,'has_items':has_items})
+
 
 def show_profile(request, username: str):
 	context = {}
