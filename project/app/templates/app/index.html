@@ -79,13 +79,17 @@
                                 </form>
                             </div>
                         </div>
-                    </div
-                    <div class=""></div>
+                    </div>
                     <div class="container">
                         <div class="row">
                             {% for item in products %}
                             <div class="col-md">
                                 <div class="product">
+                                    <button class="fav-btn">
+                                        <center>
+                                            <img src="{% static 'images/favorites.svg' %}" alt="favorite" width="20" height="20">
+                                        </center>
+                                    </button>
                                     <a href="{% url 'product' item.id %}">
                                         <center>
                                             <div class="image">
@@ -97,13 +101,11 @@
                                         </center>
                                     </a>
                                     <div class="price">
-                                        <p>
-                                            <span class="cena">ЦЕНА:</span> 
+                                            <span class="cena">ЦЕНА:</span>
                                             <br>
                                             <span class="price">
                                                 <b>{{item.price}}₽</b>
                                             </span>
-                                        </p>
                                         <button class="add-btn">
                                             <center>
                                                 <img src="{% static 'images/cart.svg' %}" alt="cart" width="20" height="20">

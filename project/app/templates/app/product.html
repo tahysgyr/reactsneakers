@@ -18,8 +18,25 @@
         <br>
         <big>{{ product.price }}₽</big>
     </h6>
-    <a href="" type="button" class="btn btn-primary"><img src="{% static 'images/cart.svg' %}" alt="cart" width="20" height="20"><span>Добавить в корзину</span></a>
-    <a href="" type="button" class="btn btn-primary"><img src="{% static 'images/heart.svg' %}" alt="heart" width="20" height="20"><span>Добавить в "Избранное"</span></a>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% if has_items %}
+        <button class="btn btn-primary" name="remove_product" id="remove_product"><img src="{% static 'images/cart.svg' %}" alt="cart" width="20" height="20"><span id="font">Удалить из корзины</span></button>
+        {% else %}
+        <button class="btn btn-primary" name="add_product" id="add_product"><img src="{% static 'images/cart.svg' %}" alt="cart" width="20" height="20"><span id="font">Добавить в корзину</span></button>
+        {% endif %}
+        <a href="" type="button" class="btn btn-primary"><img src="{% static 'images/heart.svg' %}" alt="heart" width="20" height="20"><span id="font">Добавить в "Избранное"</span></a>
+    </form>
+    
 {% endblock %}
+<script>
+    let del_btn = document.getElementById("remove_product")
+    let add_btn = document.getElementById("add_product")
+    let font = document.getElementById("font")
+    add_btn.onclick = function() {
+        add_btn.name = 'remove_product'
+        add_btn.textContent = "Удалить из корзины"
+    }
+</script>
 </body>
 </html>

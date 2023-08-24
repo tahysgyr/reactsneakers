@@ -36,12 +36,12 @@ p.name {
     border: 1px solid #F3F3F3;
     border-radius: 40px;
 }
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 11
+.fav-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid #FEF0F0;
+    background-color: #FEF0F0;
 }
 .add-btn {
     width: 32px;

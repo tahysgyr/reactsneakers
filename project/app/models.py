@@ -1,6 +1,9 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
+
+User = get_user_model()
 
 class Images(models.Model):
     images = models.ImageField('Изображения', upload_to='products/pictures/')
@@ -19,6 +22,20 @@ class Products(models.Model):
     specifications = models.CharField('Характеристики', null=True, max_length=1800)
     description = models.CharField('Описание', null=True, max_length=500)
 
+    def __str__(self) -> str:
+        return self.name
+
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+
+class Cart(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    quanity = models.PositiveIntegerField(default=1)
+    price_sale = models.DecimalField(max_digits=10, decimal_places=2, default=0, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0, null=True)
+
+    class Meta:
+        verbose_name = 'Корзина'
+        ordering = ['-id']

@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import logout, get_user, login
-from .models import Products
+from .models import Products, Cart
 from .forms import UserLoginForm, UserRegisterForm
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -11,9 +11,29 @@ from django.contrib import messages
 def main_render(request):
     return render(request, 'app/index.html', {'products': Products.objects.all()})
 
+def settings_render(request):
+	return render(request, 'app/')
+
 def show_product(request, sneak_id: int):
-    product = get_object_or_404(Products, id=sneak_id)
-    return render(request, 'app/product.html', {'product': product})
+	product = get_object_or_404(Products, id=sneak_id)
+	cart_item = Cart.objects.filter(user=request.user, product=product)
+	has_items = bool(cart_item)
+	if request.method == 'POST':
+		if 'add_product' in request.POST:
+			cart_item, created = Cart.objects.get_or_create(user=request.user, product=product)
+
+			if not created:
+				cart_item.quanity += 1
+				cart_item.save()
+				return redirect('main')
+			
+		elif 'remove_product' in request.POST:
+			cart_item = Cart.objects.get(user=request.user, product=product)
+			cart_item.delete()
+
+
+	return render(request, 'app/product.html', {'product': product, 'has_items': has_items})
+
 
 def show_profile(request, username: str):
 	context = {}
